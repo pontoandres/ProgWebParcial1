@@ -1,0 +1,99 @@
+/* Estilos generales */
+.login-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  /* Estilo para la parte izquierda */
+  .login-left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f4;
+    text-align: center;
+  }
+  
+  .login-image {
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+  }
+  
+  .logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+    color: #a04e2e;
+    font-weight: bold;
+  }
+  
+  /* Estilo para la parte derecha */
+  .login-right {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background: url('./bg-login.jpg') no-repeat center center/cover; */
+  }
+  
+  .login-box {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+  }
+  
+  h2 {
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .input-container {
+    margin-bottom: 15px;
+  }
+  
+  .input-container input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background: #1f3d3b;
+    color: white;
+    text-align: center;
+    outline: none;
+  }
+  
+  .input-container input::placeholder {
+    color: #ccc;
+  }
+  
+  .forgot-password {
+    color: white;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .login-button:hover {
+    background: #ccc;
+  }
+  
