@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import '../styles/home.css';
 
 
@@ -10,15 +11,21 @@ function Home() {
       <div className="home-card">
         <button className="home-button" onClick={() => navigate('/detail/menu')}>
           <img src="/icons/menu.png" alt="Menu Icon" />
-          <p>MENU</p>
+          <p>
+            <FormattedMessage id="home.menu" />
+          </p>
         </button>
         <button className="home-button" onClick={() => navigate('/detail/stores')}>
           <img src="/icons/stores.png" alt="Stores Icon" />
-          <p>STORES</p>
+          <p>
+            <FormattedMessage id="home.stores" />
+          </p>
         </button>
         <button className="home-button" onClick={() => navigate('/detail/cart')}>
           <img src="/icons/cart.png" alt="Cart Icon" />
-          <p>CART</p>
+          <p>
+            <FormattedMessage id="home.cart" />
+          </p>
         </button>
       </div>
     </div>

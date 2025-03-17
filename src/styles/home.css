@@ -27,10 +27,11 @@
   .home-button {
     background: none;
     border: none;
-    color: white;
+    color: black;
     font-size: 18px;
     cursor: pointer;
     text-align: center;
+    filter: invert(1);
   }
   
   .home-button img {

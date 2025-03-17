@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# Programacion con tecnologias web - Parcial1
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripción
 
-## Available Scripts
+Este es el proyecto del parcial 1 para la materia de Programación Web. La aplicación es una plataforma basada en React que implementa autenticación, navegación entre pantallas y soporte para internacionalización (i18n) con los idiomas inglés y español.
 
-In the project directory, you can run:
+## Instalación y Ejecución
 
-### `npm start`
+### 1. Clonar el repositorio 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```sh
+git clone https://github.com/pontoandres/ProgWebParcial1.git
+cd parcial1
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Instalar dependencias 
 
-### `npm test`
+```sh
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. Ejecutar el proyecto 
 
-### `npm run build`
+```sh
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Esto levanta el servidor de desarrollo en http://localhost:3000.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Funcionalidades Implementadas 
 
-### `npm run eject`
+### 1. Autenticación 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- La aplicación inicia en una página de Login.
+- Se valida que la contraseña tenga entre 5 y 8 caracteres.
+- Al hacer login, se redirige a la pantalla principal (/home).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 2. Navegación 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Se usa react-router-dom para manejar las rutas.
+- Desde la pantalla de inicio (/home), se puede acceder a las pantallas de MENU, STORES y CART.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3. Internacionalización 
 
-## Learn More
+- Se usa la librería react-intl para manejar i18n.
+- Se detecta el idioma del navegador automáticamente.
+  - Esto se hace en index.js con `const language = navigator.language.split(/[-_]/)[0];`
+- Los textos de la app cambian entre inglés y español usando `FormattedMessage` y archivos json que están en `src/locales/`.
+- Se pueden probar ambos idiomas modificando el idioma del navegador o forzándolo en `index.js`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Decisiones de Desarrollo 
 
-### Code Splitting
+1. **Uso de react-intl para i18n**
+   - Se decidió usar react-intl en lugar de otras opciones como `i18next` porque es más ligero y se integra bien con React.
+   - Los textos están en archivos `locales/en.json` y `locales/es.json`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. **Manejo de imágenes y assets**
+   - Se almacenaron en `public/` para que se pudieran acceder con rutas relativas (`/icons/cart.png`).
+   - Inicialmente hubo problemas con la carga de imágenes dentro de `src/`, por lo que se optó por la solución actual.
 
-### Analyzing the Bundle Size
+3. **Problemas con react-intl en los inputs**
+   - No se podía usar `<FormattedMessage />` directamente en `placeholder`.
+   - Se resolvió con `intl.formatMessage({id: "login.username"})` y `useIntl()`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. **Problema con la instalación de react-intl**
+   - Hubo un conflicto de dependencias con TypeScript, se solucionó usando:
+   
+     ```sh
+     npm install react-intl --legacy-peer-deps
+     ```
 
-### Making a Progressive Web App
+5. **Uso de react-router-dom para navegación**
+   - Se manejaron rutas dinámicas (`/detalle/:id`).
+   - Se usó `useNavigate()` para cambiar entre páginas.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## Componentes de la Aplicación 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Login.js** → Pantalla de autenticación.
+- **Home.js** → Pantalla principal con botones de navegación.
+- **Detalle.js** → Muestra detalles de Menu, STORES o CART (pendiente de implementación).
+- **App.js** → Configura las rutas con react-router-dom.
+- **index.js** → Inicia la app y configura react-intl.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Tecnologías Usadas 
 
-### `npm run build` fails to minify
+- **React** con create-react-app.
+- **React Router** para la navegación.
+- **React Intl** para la internacionalización.
+- **Bootstrap** para el estilo.
+- **Mockaroo API** (pendiente de integración en Detalle.js).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## Pendientes 
+
+- Implementar `Detalle.js` con consumo de API de Mockaroo.
+- Agregar estilos personalizados a la pantalla de detalles.
+- Mejorar el manejo de errores en el login.
+
+---
+
+## Notas finales 
+
+Este proyecto fue desarrollado como parte de un parcial de Programación Web. Se enfocó en la implementación de conceptos de React, manejo de estado, navegación y configuración de `react-intl`.
